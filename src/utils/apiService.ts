@@ -77,6 +77,26 @@ export const login = async (email: string, password: string) => {
     }
 };
 
+export const register = async (name: string, email: string, password: string) => {
+    try {
+        let url = '/auth/register'
+        let result: any = await apiService(url, 'POST', {
+            name,
+            email,
+            password
+        });
+        if(result) {
+            SetAccessToken(result.token, {userid: result.userid, role: result.role});
+            alert('Registration successful');
+        } else {
+            alert("Failed to register for some reason");
+        }
+    } catch (e) {
+        console.log(e);
+        alert('Something went wrong, check error message'); 
+    }
+};
+
 export const logout = async () => {
     localStorage.clear();
     let url = `/auth/logout/${User.userid}`;

@@ -26,7 +26,7 @@ const BookList = () => {
                     <h5 className="card-subtitle">{book.author}</h5>
                     <p className="card-text">${book.price}</p>
                     <p className="card-text">{book.category}</p>
-                    <Link to='/books/:id' className="btn btn-primary">View Details</Link>
+                    <Link to={`/books/${book.id}`} className="btn btn-primary">View Details</Link>
                 </div>
             ))}
         </div>

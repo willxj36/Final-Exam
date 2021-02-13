@@ -4,18 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 
 const Navbar = () => {
 
-    const history = useHistory();
-
-    const [state, setState] = useState<string>(null);
-
-    // useEffect(() => {
-    //     (async () => {
-
-    //     })();
-    // }, []);
-
-    // useEffect(() => {}, []);
-
     return(
         <div className="navbar bg-dark">
             <Link to='/' className="btn btn-success">Home</Link>
