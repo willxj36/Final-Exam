@@ -3,6 +3,7 @@ import { Request } from 'express';
 export interface Book {
     id?: number,
     categoryid?: number,
+    category: string,
     title: string,
     author?: string,
     price?: number,
@@ -17,8 +18,9 @@ export interface Payload {
 
 export interface User {
     id?: number,
-    email?: string,
-    hash?: string,
+    email: string,
+    password?: string,
+    name?: string
     role?: string,
     _created?: Date
 }
