@@ -24,7 +24,7 @@ const Register = () => {
     return(
         <div>
             <label htmlFor="name">Name</label>
-            <input value={name} onChange={(e) => setName(e.currentTarget.value)} type="name" name="name" id="name"/>
+            <input value={name} onChange={(e) => setName(e.currentTarget.value)} type="text" name="name" id="name"/>
             <label htmlFor="email">Email</label>
             <input value={email} onChange={(e) => setEmail(e.currentTarget.value)} type="text" name="email" id="email"/>
             <label htmlFor="password">Password</label>

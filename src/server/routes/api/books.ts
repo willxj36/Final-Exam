@@ -22,6 +22,11 @@ router.get('/:id?', async (req, res) => { //all other methods same, just change 
 router.post('/', async (req, res) => { //all other methods same, just change router.method
     try {
         let book = req.body;
+        let category = book.category;
+        let [categoryDb] = await db.Categories.getOne('name', category);
+        let categoryId = categoryDb.id;
+        book.categoryid = categoryId;
+        delete book.category;
         let response = await db.Books.post(book);
         res.json(response);
     } catch (e) {
@@ -34,6 +39,11 @@ router.put('/:id', async (req, res) => { //all other methods same, just change r
     try {
         let book = req.body
         let id = Number(req.params.id);
+        let category = book.category;
+        let [categoryDb] = await db.Categories.getOne('name', category);
+        let categoryId = categoryDb.id;
+        book.categoryid = categoryId;
+        delete book.category;
         let response = await db.Books.put(book, id);
         res.json(response);
     } catch (e) {
