@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return(
         <div className="navbar bg-dark">
-            <button onClick={() => history.push('/')} className="btn btn-success">Home</button>
+            <Link to='/' className="btn btn-success">Home</Link>
             <Link to='/books' className="btn btn-primary">Book List</Link>
         </div>
     )

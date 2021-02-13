@@ -49,6 +49,15 @@ export let User: any = {
     role: localStorage.getItem('role') || null
 };
 
+const SetAccessToken = (token: string, user: {userid: undefined, role: 'admin'}) => {
+    AccessToken = token;
+    User = user;
+
+    localStorage.setItem('token', token);
+    localStorage.setItem('userid', User.userid);
+    localStorage.setItem('role', User.role);
+}
+
 export const login = async (email: string, password: string) => {
     try {
         let url = '/auth/login'
@@ -57,15 +66,8 @@ export const login = async (email: string, password: string) => {
             password
         });
         if(result) {
-            const SetAccessToken = (token: string, user: {userid: undefined, role: 'admin'}) => {
-                AccessToken = token;
-                User = user;
-            
-                localStorage.setItem('token', token);
-                localStorage.setItem('userid', User.userid);
-                localStorage.setItem('role', User.role);
-            }
             SetAccessToken(result.token, {userid: result.userid, role: result.role});
+            alert('Log in successful');
         } else {
             alert("Incorrect login info, check your spelling");
         }
@@ -78,7 +80,7 @@ export const login = async (email: string, password: string) => {
 export const logout = async () => {
     localStorage.clear();
     let url = `/auth/logout/${User.userid}`;
-    await apiService(url);
+    return await apiService(url);
 }
 
 export default apiService;

@@ -1,33 +1,29 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import BookList from './components/BookList';
+import SingleBook from './components/SingleBook';
+import EditBook from './components/EditBook';
+import AddBook from './components/AddBook';
+import Login from './components/Login';
+import Register from './components/Register';
+
 
 const App = () => {
-
-	const [greeting, setGreeting] = useState<string>('');
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		try {
-	// 			return null
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	})();
-	// }, []);
 
 	return (
 		<BrowserRouter>
 			<Navbar />
 			<Switch>
-				<Route>
-					<div className="min-vh-100 d-flex justify-content-center align-items-center">
-						<h1 className="display-1">Welcome to the Bookstore!</h1>
-					</div>
-				</Route>
-
+				<Route exact path='/' component={Home} />
+				<Route exact path='/books' component={BookList} />
+				<Route exact path='/books/:id' component={SingleBook} />
+				<Route exact path='/books/:id/update' component={EditBook} />
+				<Route exact path='/books/new' component={AddBook} />
+				<Route exact path='/login' component={Login} />
+				<Route exact path='/register' component={Register} />
 			</Switch>
 		</BrowserRouter>
 	);
