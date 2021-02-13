@@ -6,11 +6,11 @@ import { Payload } from '../models';
 import config from '../../server/config';
 
 export const createToken = async (payload: Payload) => {
-    let tokenid: any = await db.Tokens.insert(payload.userid);
+    let tokenid: any = await db.Tokens.post(payload.userid);
     payload.accesstokenid = tokenid.insertId;
     payload.unique = crypto.randomBytes(32).toString('hex');
     let token = jwt.sign(payload, config.auth.secret);
-    await db.Tokens.update(payload.accesstokenid, token);
+    await db.Tokens.put(payload.accesstokenid, token);
     return token;
 }
 

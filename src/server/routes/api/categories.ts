@@ -1,10 +1,12 @@
 import * as express from 'express';
+import db from '../../db';
 
 const router = express.Router();
 
-router.get('/', (req, res) => { //all other methods same, just change router.method
+router.get('/', async (req, res) => { //all other methods same, just change router.method
     try {
-        res.json({message: 'test success'});
+        let categories = await db.Categories.getAll();
+        res.json(categories);
     } catch (e) {
         console.log(e);
         res.status(500).json({message: 'failed at the router'});
