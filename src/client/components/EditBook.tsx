@@ -64,7 +64,7 @@ const EditBook = () => {
             <select value={category} onChange={(e) => setCategory(e.currentTarget.value)} name="category" id="category">
                 <option value={category}>{category}</option>
                 {categories.map((cat: any) => (
-                    <option value={cat.name}>{cat.name}</option>
+                    <option key={cat.id} value={cat.name}>{cat.name}</option>
                 ))}
             </select>
             <button onClick={handleEdit} className="btn-primary btn">Submit Edit</button>

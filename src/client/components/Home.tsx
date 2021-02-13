@@ -24,7 +24,12 @@ const Home = () => {
                 <h1 className="display-1">Welcome to the Bookstore!</h1>
             </div>
             <div className="row">
-                { loggedIn ? <button onClick={handleLogout} className="btn btn-lg btn-warning">Log Out</button> : <Link to='/login' className="btn btn-lg btn-primary">Log In</Link> }
+                { loggedIn ? (
+                    <>
+                        <button onClick={handleLogout} className="btn btn-lg btn-warning">Log Out</button>
+                        <Link to='/books/new' className='btn btn-lg btn-success'>Add a Book</Link>
+                    </>
+                ) : <Link to='/login' className="btn btn-lg btn-primary">Log In</Link> }
             </div>
         </div>
     )
